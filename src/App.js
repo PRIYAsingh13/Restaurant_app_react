@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Link} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Link, Route } from "react-router-dom";
 
 import RestaurantList from "./Components/RestaurantList";
 import RestaurantCreate from "./Components/RestaurantCreate";
@@ -12,7 +12,6 @@ function App() {
   return (
     <div>
       <Router>
-    
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -24,33 +23,23 @@ function App() {
             <Link to="/create">Create</Link>
           </li>
           <li>
-            <Link to="/details">Detail</Link>
+            <Link to="/details">Details</Link>
           </li>
           <li>
             <Link to="/search">Search</Link>
           </li>
           <li>
-            <Link to="/update">Update</Link>
+            <Link to="/update">update</Link>
           </li>
         </ul>
-        <Route path="/list">
-          <RestaurantList />
-        </Route>
-        <Route path="/create">
-          <RestaurantCreate />
-        </Route>
-        <Route path="/detail">
-          <RestaurantDetail />
-        </Route>
-        <Route path="/search">
-          <RestaurantSearch />
-        </Route>
-        <Route path="/update">
-          <RestaurantUpdate />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
+        <Routes>
+          <Route path="/list" element={<RestaurantList />}></Route>
+          <Route path="/create" element={<RestaurantCreate />}></Route>
+          <Route path="/details" element={<RestaurantDetail />}></Route>
+          <Route path="/search" element={<RestaurantSearch />}></Route>
+          <Route path="/update" element={<RestaurantUpdate />}></Route>
+          <Route exact path="/" element={<Home />}></Route>
+        </Routes>
       </Router>
     </div>
   );
